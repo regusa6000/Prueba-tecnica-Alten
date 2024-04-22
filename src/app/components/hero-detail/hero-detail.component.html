@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Hero Detail</h2>
+<mat-dialog-content>
+  <form [formGroup]="heroFormDetail" style="display: flex; flex-direction: column;">
+    <p>Id:</p>
+    <mat-form-field>
+      <input matInput formControlName="id"/>
+    </mat-form-field>
+    <p>Hero:</p>
+    <mat-form-field>
+      <input matInput formControlName="name"/>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    mat-flat-button
+    color="primary"
+    [mat-dialog-close]="heroFormDetail.value"
+  >
+    Save
+  </button>
+  <button mat-flat-button color="danger" (click)="closeDialogHero()">
+    Cancel
+  </button>
+</mat-dialog-actions>

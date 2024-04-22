@@ -1,0 +1,62 @@
+<div style="width: 70%; margin: auto; padding: 10px;">
+
+  <div style="display: flex;">
+    <button mat-flat-button color="primary" style="margin-bottom: 10px;" (click)="openFormHeroDialog()">Add Hero</button>
+  </div>
+  
+
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. Marvel"
+      #input
+    />
+  </mat-form-field>
+
+  <mat-spinner *ngIf="showSpinner" diameter="40" style="margin-right: 20px; margin: auto;"></mat-spinner>
+
+  <div class="mat-elevation-z8" *ngIf="!showSpinner">
+    <table mat-table [dataSource]="dataHeroe" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center;">Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button (click)="openFormHeroDetailDialog(row)">
+            <mat-icon>update</mat-icon>
+          </button>
+          <button mat-icon-button (click)="openDeleteHeroDialog(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          No data matching the filter "{{ input.value }}"
+        </td>
+      </tr>
+    </table>
+
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"></mat-paginator> -->
+  </div>
+
+</div>

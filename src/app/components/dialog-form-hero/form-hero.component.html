@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Add Hero</h2>
+<mat-dialog-content>
+    <form [formGroup]="heroForm">
+        <mat-form-field>
+            <mat-label>Hero </mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+    </form>
+
+  
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button color="primary" [mat-dialog-close]="heroForm.value">Save</button>
+  <button mat-flat-button color="danger"(click)="closeDialogHero()">Cancel</button>
+</mat-dialog-actions>

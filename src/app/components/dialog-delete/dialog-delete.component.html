@@ -1,0 +1,7 @@
+<mat-dialog-content>
+    <p>The selected hero will be eliminated: <b>{{ data.name | uppercase }} </b> </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button color="primary" [mat-dialog-close]="confirm">Yes</button>
+  <button mat-flat-button color="danger"(click)="closeDialogHero()">No</button>
+</mat-dialog-actions>
